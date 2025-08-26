@@ -1,0 +1,62 @@
+PIN_correcto = 1234
+saldo = 1000
+intentos = 3
+
+ 
+ 
+def consultar(saldo):
+    print("Su saldo es:", saldo)
+
+def retirar(saldo):
+    retiro= float(input("Ingres la cantidad que desea retirar\n"))
+    if retiro <= saldo:
+        saldo -= retiro
+        print("Retiro exitoso")
+    else:
+        print("Fondos insuficientes")
+    return saldo
+
+def depositar(saldo):
+    deposito = float(input("Ingrese la cantidad que desea depositar\n"))
+    if deposito >=0:
+        saldo +=deposito
+        print("Se ha depositado el dinero exitosamente a su cuenta")
+    else:
+        print("El deposito debe ser mayor a 0")
+    return saldo
+    
+    
+while intentos >0:
+    PIN = int(input("Ingrese el PIN de tu cuenta\n"))
+    if PIN == PIN_correcto:
+        print("Bienvenido al cajero")
+        break
+    else: 
+        intentos -=1
+        if intentos ==0:
+           print("PIN Incorrecto cuenta bloqueada")
+           exit ()
+        else:
+            print("PIN incorrecto te quedan", intentos, "intentos")
+
+
+seleccion = 0
+while seleccion != 4: 
+    print("1.Ver saldo acutal\n")
+    print("2.Retirar dinero\n")
+    print("3.Depositar dinero\n")
+    print("4.Salir \n")
+    seleccion = int(input("Seleccione la opcion que desea\n"))
+
+    if seleccion == 1:
+        consultar(saldo)
+    elif seleccion ==2:
+       saldo = retirar(saldo)
+    elif seleccion ==3:
+        saldo = depositar(saldo)
+    elif seleccion ==4:
+        print("Usted a salido")
+    else: print("Opcion no valida")
+
+    
+
